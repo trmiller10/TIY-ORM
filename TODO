@@ -1,0 +1,41 @@
+DONE
+
+added CSV files to project root directory
+
+created database 'tiyorm' in PostgreSQL
+
+added application properties
+    -note: set server persistence to false
+
+created home.mustache in templates
+
+created classes and interfaces
+    -Customer
+    -CustomerRepository
+    -ORMController
+    -Purchase
+    -PurchaseRepository
+    -TiyOrmApplication
+
+TODO
+ORMController:
+    *annotate ORMController
+add "/" route
+    -create @PostConstruct method called 'init' to parse CSV files
+
+Customer:
+-write properties to hold all CSV info
+-write id property with annotations
+
+Purchase:
+-write properties to hold all CSV info
+    -add Customer to field (to join both tables together)
+    -don't need to store customer_id; join system will do that automatically
+
+CustomerRepository:
+    -
+
+PurchaseRepository:
+    -
+
+
