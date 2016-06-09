@@ -15,25 +15,25 @@ public class Purchase {
     @Id
     @GeneratedValue
     private int id;
-    @Column
+    //@Column
     private String date;
-    @Column
+    //@Column
     private String credit_card;
-    @Column
+    //@Column
     private int cvv;
-    @Column
+    //@Column
     private String category;
-    //@ManyToOne
-    //Customer customer = new Customer();
+    @ManyToOne
+    Customer customer = new Customer();
 
     public Purchase() {}
 
-    public Purchase(int id, String date, String credit_card, int cvv, String category/*, Customer customer*/) {
+    public Purchase(int id, String date, String credit_card, int cvv, String category, Customer customer) {
         this.date = date;
         this.credit_card = credit_card;
         this.cvv = cvv;
         this.category = category;
-        //this.customer = customer;
+        this.customer = customer;
     }
 
 
@@ -45,13 +45,13 @@ public class Purchase {
         this.id = id;
     }
 
-   /* public Customer getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }*/
+    }
 
     public String getDate() {
         return date;

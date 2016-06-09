@@ -12,9 +12,17 @@
 </tr>
 
 <tr>
-    <td>{{name}}</td>
-    <td>{{email}}</td>
-
+    {{#purchases}}
+        <tr>
+            <td>{{customer.name}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{category}}</td>
+            <td>{{credit_card}}</td>
+            <td>{{cvv}}</td>
+            <td>{{date}}</td>
+        </tr>
+    {{/purchases}}
+    {{^purchases}}NO{{/purchases}}
 </tr>
 
 </table>
