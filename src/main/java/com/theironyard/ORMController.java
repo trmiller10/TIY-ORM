@@ -2,6 +2,8 @@ package com.theironyard;
 
 import com.sun.tools.javac.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -41,20 +44,18 @@ public class ORMController {
     }
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String homeRoute(Model model) {
+    public String homeRoute(Model model, String category) {
 
-
-        Iterable<Purchase> purchases = purchaseRepository.findAll();
+       Iterable<Purchase> purchases;
+        if (category != null) {
+            purchases = purchaseRepository.findByCategory(category);
+        } else {
+            purchases = purchaseRepository.findAll();
+        }
 
         model.addAttribute("purchases", purchases);
-
-        Iterable<Customer> customers = customerRepository.findAll();
-
-        model.addAttribute("customers", customers);
-
-        return "home";
-
-
+    return "home";
+    }
         /*
         List<Customer> customers = c;
 
@@ -68,7 +69,6 @@ public class ORMController {
                 model.addAttribute("email", customers);
             return "home";
         */
-        }
         /*
         Iterable<Purchase> purchases = purchaseRepository.findAll();
 
@@ -79,7 +79,6 @@ public class ORMController {
         model.addAttribute("email", session.getAttribute("email"));
 
 */
-
 
 
     public void customerCSVParser() {
